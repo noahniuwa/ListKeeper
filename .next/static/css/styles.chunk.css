@@ -6,7 +6,9 @@
   font-size: 18px;
 }
 
-
+.ql-editor {
+  -webkit-user-select: text;
+}
 svg:not(:root).svg-inline--fa {
   overflow: visible; }
 

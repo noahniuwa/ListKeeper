@@ -6,3 +6,6 @@
   font-size: 18px;
 }
 
+.ql-editor {
+  -webkit-user-select: text;
+}
