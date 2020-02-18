@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Head from 'next/head'
 import colors from '../helpers/colors'
 
-
 export default class Index extends React.Component {
   constructor(props){
     super(props)
@@ -65,6 +64,7 @@ export default class Index extends React.Component {
         <Head>
           <title>TrelloLike</title>
           <link href="https://fonts.googleapis.com/css?family=Dosis:400,700&display=swap" rel="stylesheet" />
+          <script src="/DragDropTouch.js"></script>
         </Head>
         <header>
           ListKeeper
