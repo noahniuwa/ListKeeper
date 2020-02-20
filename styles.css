@@ -9,3 +9,26 @@
 .ql-editor {
   -webkit-user-select: text;
 }
+
+body {
+  overflow-y: hidden;
+  margin-top: 15px;
+  padding-top: 100px;
+}
+
+.ql-container {
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
+
+::-webkit-scrollbar {
+  background-color: #D9DBE2;
+  width: 10px;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background-color: #BFC3CD;
+  border-radius: 10px;
+}

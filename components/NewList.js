@@ -3,7 +3,7 @@ import List from '../components/List'
 import colors from '../helpers/colors'
 
 
-export default function NewList({addList, deleteList, switchLists, setOpenMenu, getOpenMenu, openMenu}) {
+export default function NewList({addList, deleteList, setOpenMenu, switchLists, getOpenMenu, openMenu}) {
   const [title, setTitle] = useState('')
   
   return (
@@ -22,7 +22,7 @@ export default function NewList({addList, deleteList, switchLists, setOpenMenu, 
           addList({ 
             setOpenMenu: setOpenMenu,
             setTitle: setTitle,
-            switchLists: switchLists, 
+            switchLists: switchLists,
             deleteList: deleteList,
             key: Math.random(),
             id: Math.random(),

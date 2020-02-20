@@ -37,7 +37,8 @@ class Editor extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   handleChange(value) {
     this.setState({
       text: value
-    }); // console.log(this.state.text)
+    });
+    console.log(this.state.text);
   }
 
   render() {

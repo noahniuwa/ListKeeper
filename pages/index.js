@@ -3,6 +3,7 @@ import List from '../components/List'
 import { useState } from 'react'
 import Head from 'next/head'
 import colors from '../helpers/colors'
+import { DragDropContext } from 'react-beautiful-dnd'
 
 export default class Index extends React.Component {
   constructor(props){
@@ -60,7 +61,7 @@ export default class Index extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="app">
         <Head>
           <title>TrelloLike</title>
           <link href="https://fonts.googleapis.com/css?family=Dosis:400,700&display=swap" rel="stylesheet" />
@@ -94,9 +95,13 @@ export default class Index extends React.Component {
           />
         </main>   
        <style jsx>{`
+         .app {
+          
+         }
           main {
             display: flex;
-            padding: 15px;
+            padding-left: 20px;
+            
           }
           .dropspace {
             border: 1px solid blue;
@@ -118,8 +123,15 @@ export default class Index extends React.Component {
             align-items: flex-start;
           }
           header {
+            position: fixed;
+            height: 80px;
             width: 100%;
+            line-height: 80px;
             background-color: ${colors.grey};
+            font-size: 2rem;
+            left: 0;
+            top: 0;
+            padding-left: 20px;
           }
         `}</style>
       </div>

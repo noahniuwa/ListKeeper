@@ -3,6 +3,7 @@ import EditableTitle from './EditableTitle'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import dynamic from 'next/dynamic'
 import colors from '../helpers/colors'
+import { Droppable } from 'react-beautiful-dnd'
 
 const Editor = dynamic(
   () => import('./Editor'),
@@ -67,7 +68,14 @@ export default class List extends React.Component {
   
   render(){
     return (
-      <div onDrop={() => this.onDrop(event)} onDragOver={() => this.onDragOver(event)} onDragStart={() => this.drag(event)} draggable='true' id={this.props.id} className="list">
+      <div 
+        onDrop={() => this.onDrop(event)} 
+        onDragOver={() => this.onDragOver(event)} 
+        onDragStart={() => this.drag(event)} 
+        draggable='true' 
+        id={this.props.id} 
+        className="list"
+      >
         <div className='list-heading'>
           <EditableTitle initialTitle={this.props.initialTitle}/>
           <div className='ellipsis'>
@@ -121,9 +129,9 @@ export default class List extends React.Component {
           }
           .list {
             vertical-align: top;
-            width: 250px;
+            width: 300px;
             border-radius: 5px;
-            padding: 5px;
+            padding: 8px;
             display: inline-block;
             background-color: ${colors.grey};
             flex-shrink: 0;

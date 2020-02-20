@@ -10,7 +10,7 @@ export default class Editor extends React.Component {
  
   handleChange(value) {
     this.setState({ text: value })
-    // console.log(this.state.text)
+    console.log(this.state.text)
   }
  
   render() {

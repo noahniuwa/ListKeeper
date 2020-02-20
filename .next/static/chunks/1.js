@@ -59,7 +59,8 @@ function (_React$Component) {
     value: function handleChange(value) {
       this.setState({
         text: value
-      }); // console.log(this.state.text)
+      });
+      console.log(this.state.text);
     }
   }, {
     key: "render",
@@ -24316,17 +24317,6 @@ module.exports = server_browser;
   })();
 }
 
-
-/***/ }),
-
-/***/ "./node_modules/react-dom/index.js":
-/*!***********************************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_5f137288facb1107b491 ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(/*! dll-reference dll_5f137288facb1107b491 */ "dll-reference dll_5f137288facb1107b491"))("./node_modules/react-dom/index.js");
 
 /***/ }),
 
