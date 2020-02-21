@@ -24,7 +24,7 @@ export default function NewList({
           name='title'
         > 
         </input>
-        <button onClick={(e) => {
+        <div onClick={(e) => {
           e.preventDefault()
           addList({ 
             setOpenMenu: setOpenMenu,
@@ -35,28 +35,31 @@ export default function NewList({
             id: Math.random(),
             initialTitle: title || "Title",})
           setTitle("")
-        }}>
+        }}
+        className="add-list-button"
+        >
           Add note
-        </button>
+        </div>
       </div>
       <style jsx>{`
+        .add-list-button{
+          display: inline-block;
+          background-color: #D9DBE2;
+          padding: 6px;
+          border-radius: 5px;
+        }
         .new-list-container {
           white-space: nowrap;
-          border: 7px ${colors.grey} solid;
           border-radius: 5px;
-        }
-        button {
-          border-left: 3px solid ${colors.grey};
-        }
-        .new-list {
           width: 250px;
-          height: 50px;
           border-radius: 5px;
-        
           text-align: center;
         }
         input {
           padding: 5px;
+          border: 2px ${colors.grey} solid;
+          border-radius: 5px;
+          margin-right: 6px;
         }
         button {
           padding: 5px;
