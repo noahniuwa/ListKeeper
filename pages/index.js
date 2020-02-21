@@ -92,7 +92,8 @@ export default class Index extends React.Component {
             onDragEnd={this.onDragEnd}
           >
             <Droppable
-              droppableId={"droppable-id"}
+              droppableId="droppable-area"
+              direction="horizontal"
             >
             {(provided) => (
               <div className='lists-container'

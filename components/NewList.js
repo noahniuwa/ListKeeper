@@ -15,7 +15,7 @@ export default function NewList({
   
   return (
     <div className='new-list'>
-      <form>
+      <div className='new-list-container'>
         <input 
           value={title} 
           placeholder='Note title'
@@ -38,14 +38,21 @@ export default function NewList({
         }}>
           Add note
         </button>
-      </form>
+      </div>
       <style jsx>{`
+        .new-list-container {
+          white-space: nowrap;
+          border: 7px ${colors.grey} solid;
+          border-radius: 5px;
+        }
+        button {
+          border-left: 3px solid ${colors.grey};
+        }
         .new-list {
           width: 250px;
-          background-color: ${colors.grey};
           height: 50px;
           border-radius: 5px;
-          line-height: 50px;
+        
           text-align: center;
         }
         input {
