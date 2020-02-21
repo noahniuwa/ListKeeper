@@ -38,7 +38,6 @@ class Editor extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     this.setState({
       text: value
     });
-    console.log(this.state.text);
   }
 
   render() {
@@ -47,7 +46,7 @@ class Editor extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       onChange: this.handleChange,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 18
+        lineNumber: 17
       },
       __self: this
     });

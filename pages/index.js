@@ -3,7 +3,7 @@ import List from '../components/List'
 import { useState } from 'react'
 import Head from 'next/head'
 import colors from '../helpers/colors'
-import { DragDropContext } from 'react-beautiful-dnd'
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 export default class Index extends React.Component {
   constructor(props){
@@ -34,28 +34,45 @@ export default class Index extends React.Component {
     this.setState({lists: newLists})
   }
 
-  switchLists = (sourceId, targetId) => {
-    let newLists = this.state.lists.slice()
-    let sourceElement
-    let targetElement
-    newLists.forEach(list => {
-      if (String(list.id) === String(sourceId)){
-        sourceElement = list
-      }
-      if (String(list.id) === String(targetId)){
-        targetElement = list
-      }
-    })
+  // switchLists = (sourceId, targetId) => {
+  //   let newLists = this.state.lists.slice()
+  //   let sourceElement
+  //   let targetElement
+  //   newLists.forEach(list => {
+  //     if (String(list.id) === String(sourceId)){
+  //       sourceElement = list
+  //     }
+  //     if (String(list.id) === String(targetId)){
+  //       targetElement = list
+  //     }
+  //   })
 
-    newLists = newLists.map(list => {
-      if (String(list.id) === String(sourceId)){
-        return targetElement
-      }
-      if (String(list.id) === String(targetId)){
-        return sourceElement
-      }
-      return list
-    })
+  //   newLists = newLists.map(list => {
+  //     if (String(list.id) === String(sourceId)){
+  //       return targetElement
+  //     }
+  //     if (String(list.id) === String(targetId)){
+  //       return sourceElement
+  //     }
+  //     return list
+  //   })
+  //   this.setState({lists: newLists})
+  // }
+
+  onDragEnd = (result) => {
+    console.log(result)
+    const { destination, source, draggableId } = result
+    if (!destination) {
+      return
+    }
+    if (destination.droppableId === source.droppableId && destination.index === source.index  ) {
+      return
+    }
+
+    const newLists = Array.from(this.state.lists)
+    const sourceList = newLists[source.index]
+    newLists.splice(source.index, 1)
+    newLists.splice(destination.index, 0, sourceList)
     this.setState({lists: newLists})
   }
 
@@ -71,20 +88,35 @@ export default class Index extends React.Component {
           ListKeeper
         </header>
         <main>
-          <div className='lists-container'>
-            {this.state.lists.map((list) => {
-              return <List 
-              openMenu={this.state.openMenu}
-              setOpenMenu={list.setOpenMenu}
-              setTitle={list.setTitle}
-              switchLists={list.switchLists}
-              deleteList={list.deleteList}
-              key={list.key}
-              id={list.id}
-              initialTitle={list.initialTitle}
-              />
-            })}
-          </div>
+          <DragDropContext
+            onDragEnd={this.onDragEnd}
+          >
+            <Droppable
+              droppableId={"droppable-id"}
+            >
+            {(provided) => (
+              <div className='lists-container'
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+              {this.state.lists.map((list, index) => {
+                return <List 
+                  index={index}
+                  openMenu={this.state.openMenu}
+                  setOpenMenu={list.setOpenMenu}
+                  setTitle={list.setTitle}
+                  // switchLists={list.switchLists}
+                  deleteList={list.deleteList}
+                  key={list.key}
+                  id={list.id}
+                  initialTitle={list.initialTitle}
+                />
+              })}
+              {provided.placeholder}
+            </div>
+            )}
+            </Droppable>
+          </DragDropContext>
           <NewList 
             openMenu={this.state.openMenu}
             getOpenMenu={this.getOpenMenu} 

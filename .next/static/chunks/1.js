@@ -60,7 +60,6 @@ function (_React$Component) {
       this.setState({
         text: value
       });
-      console.log(this.state.text);
     }
   }, {
     key: "render",
@@ -70,7 +69,7 @@ function (_React$Component) {
         onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 18
+          lineNumber: 17
         },
         __self: this
       });
