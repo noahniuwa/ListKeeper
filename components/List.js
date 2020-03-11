@@ -36,20 +36,6 @@ export default class List extends React.Component {
     this.setState({ text: value })
   }
 
-  // drag = (event) => {
-  //   event.dataTransfer.setData('text', event.target.id)
-  // }
-   
-  // onDragOver = (event) => {
-  //   event.preventDefault();
-  // }
-
-  // onDrop = (event) => {
-  //   event.preventDefault();
-  //   const sourceNodeId = event.dataTransfer.getData('text')
-  //   const targetNodeId = event.target.closest('.list').id
-  //   this.props.switchLists(sourceNodeId, targetNodeId)
-  // }
 
   handleEllipsisClick = (event) => {
     if (this.props.openMenu === this.state.menuId) {
@@ -86,6 +72,7 @@ export default class List extends React.Component {
           >
             <div className='list-heading'>
               <EditableTitle initialTitle={this.props.initialTitle}/>
+              <img className='drag-handle' src='drag-handle.svg'/>
               <div className='ellipsis'>
                 <FontAwesomeIcon onClick={this.handleEllipsisClick} icon='ellipsis-h' />
                 <div className={`menu ${this.state.menuDisplay}`}> 
@@ -112,6 +99,12 @@ export default class List extends React.Component {
                 margin-left: 30px;
                 width: 80px;
               }
+              .drag-handle {
+                width: 20px;
+                height: 20px;
+                position: relative;
+                transform: translate(-20px, 7px);
+              }
               .close-button {
                 text-align: right;
               }
@@ -129,6 +122,9 @@ export default class List extends React.Component {
               }
               .ellipsis {
               padding-right: 3px;
+              }
+              .ellipsis:hover {
+                cursor: pointer;
               }
               .list-heading {
                 display: flex;
